@@ -249,5 +249,26 @@ sub querySelect9 : Test(1)
 	is ( $sql, 'SELECT column_name FROM table_name LIMIT 10 OFFSET 20');
 }
 
+=pod example
+
+<select distinct="true" from="table_name">
+	<result>
+		<column>column_name</column>
+	</result>
+</select>
+
+=cut
+sub querySelectDistinct : Test(1)
+{
+	my $query = DBIx::Romani::Query::Select->new();
+	$query->set_distinct( 1 );
+	$query->add_from( "table_name" );
+	$query->add_result( DBIx::Romani::Query::SQL::Column->new( undef, "column_name" ) );
+
+	# generate the SQL
+	my $sql = generate_sql( $query );
+	is ( $sql, 'SELECT DISTINCT column_name FROM table_name');
+}
+
 1;
 

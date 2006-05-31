@@ -55,6 +55,12 @@ sub visit_select
 	}
 	
 	my $SQL = "SELECT ";
+	
+	# add distinct if necessary
+	if ( $select->get_distinct() )
+	{
+		$SQL .= "DISTINCT ";
+	}
 
 	# add the result list
 	my @results;

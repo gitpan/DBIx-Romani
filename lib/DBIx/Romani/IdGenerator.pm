@@ -6,7 +6,18 @@ use strict;
 sub new
 {
 	my $class = shift;
-	my $conn  = shift;
+	my $args  = shift;
+
+	my $conn;
+
+	if ( ref($args) eq 'HASH' )
+	{
+		$conn = $args->{conn};
+	}
+	else
+	{
+		$conn = $args;
+	}
 
 	my $self = {
 		conn => $conn,

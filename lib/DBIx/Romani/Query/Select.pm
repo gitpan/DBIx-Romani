@@ -20,6 +20,7 @@ sub new
 		order_by => [],
 		limit    => undef,
 		offset   => undef,
+		distinct => 0,
 	};
 
 	bless $self, $class;
@@ -34,6 +35,7 @@ sub get_order_by { return shift->{order_by}; }
 sub get_join     { return shift->{join}; }
 sub get_limit    { return shift->{limit}; }
 sub get_offset   { return shift->{offset}; }
+sub get_distinct { return shift->{distinct}; }
 
 sub clear_from     { shift->{from}     = [ ]; }
 sub clear_result   { shift->{result}   = [ ]; }
@@ -112,6 +114,12 @@ sub set_limit
 	my ($self, $limit, $offset) = @_;
 	$self->{limit}  = $limit;
 	$self->{offset} = $offset;
+}
+
+sub set_distinct
+{
+	my ($self, $distinct) = @_;
+	$self->{distinct} = $distinct;
 }
 
 sub visit

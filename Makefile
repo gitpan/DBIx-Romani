@@ -18,7 +18,7 @@
 #     NO_META => q[1]
 #     PL_FILES => {  }
 #     PREREQ_PM => { Exception::Class=>q[0], Test::More=>q[0], XML::DOM=>q[0], Test::Class=>q[0], Data::Dumper=>q[0], Exception::Class::DBI=>q[0], DBI=>q[0], Carp=>q[0] }
-#     VERSION => q[0.0.10]
+#     VERSION => q[0.0.11]
 #     dist => { PREOP=>q[$(PERL) -I. -MModule::Install::Admin -e "dist_preop(q($(DISTVNAME)))"] }
 
 # --- MakeMaker post_initialize section:
@@ -58,11 +58,11 @@ AR_STATIC_ARGS = cr
 DIRFILESEP = /
 NAME = DBIx::Romani
 NAME_SYM = DBIx_Romani
-VERSION = 0.0.10
+VERSION = 0.0.11
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_0_10
+VERSION_SYM = 0_0_11
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.0.10
+XS_VERSION = 0.0.11
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -177,7 +177,8 @@ PERL_ARCHIVE       =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = lib/DBIx/Romani/Connection.pm \
+TO_INST_PM = lib/DBIx/Romani.pm \
+	lib/DBIx/Romani/Connection.pm \
 	lib/DBIx/Romani/Connection/Base.pm \
 	lib/DBIx/Romani/Connection/Factory.pm \
 	lib/DBIx/Romani/Driver.pm \
@@ -240,6 +241,8 @@ PM_TO_BLIB = lib/DBIx/Romani/Query/SQL/TTT/Function.pm \
 	blib/lib/DBIx/Romani/Query/SQL/TTT/Join.pm \
 	lib/DBIx/Romani/Query/Where.pm \
 	blib/lib/DBIx/Romani/Query/Where.pm \
+	lib/DBIx/Romani.pm \
+	blib/lib/DBIx/Romani.pm \
 	lib/DBIx/Romani/Query/XML/SQL.pm \
 	blib/lib/DBIx/Romani/Query/XML/SQL.pm \
 	lib/DBIx/Romani/Query/Select/Join.pm \
@@ -280,10 +283,10 @@ PM_TO_BLIB = lib/DBIx/Romani/Query/SQL/TTT/Function.pm \
 	blib/lib/DBIx/Romani/Query/Variable.pm \
 	lib/DBIx/Romani/PreparedQuery.pm \
 	blib/lib/DBIx/Romani/PreparedQuery.pm \
-	lib/DBIx/Romani/Query/SQL/Column.pm \
-	blib/lib/DBIx/Romani/Query/SQL/Column.pm \
 	lib/DBIx/Romani/Query/XML/Function.pm \
 	blib/lib/DBIx/Romani/Query/XML/Function.pm \
+	lib/DBIx/Romani/Query/SQL/Column.pm \
+	blib/lib/DBIx/Romani/Query/SQL/Column.pm \
 	lib/DBIx/Romani/Query/Update.pm \
 	blib/lib/DBIx/Romani/Query/Update.pm \
 	lib/DBIx/Romani/Connection/Factory.pm \
@@ -360,7 +363,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = DBIx-Romani
-DISTVNAME = DBIx-Romani-0.0.10
+DISTVNAME = DBIx-Romani-0.0.11
 
 
 # --- MakeMaker macro section:
@@ -534,14 +537,14 @@ realclean purge ::  clean realclean_subdirs
 	$(RM_RF) $(DISTVNAME)
 	$(RM_F)  blib/lib/DBIx/Romani/Connection/Base.pm blib/lib/DBIx/Romani/Driver.pm blib/lib/DBIx/Romani/Query/SQL/TTT/Function.pm blib/lib/DBIx/Romani/Driver/mysql.pm
 	$(RM_F) blib/lib/DBIx/Romani/Query/SQL/TTT/Operator.pm blib/lib/DBIx/Romani/Query/SQL/TTT/Keyword.pm blib/lib/DBIx/Romani/Query/Comparison.pm blib/lib/DBIx/Romani/Query/Update.pm
-	$(RM_F) blib/lib/DBIx/Romani/Query/SQL/Null.pm blib/lib/DBIx/Romani/Query/Function/Count.pm $(FIRST_MAKEFILE) blib/lib/DBIx/Romani/Query/XML/Select.pm blib/lib/DBIx/Romani/Query/SQL/Generate.pm
-	$(RM_F) blib/lib/DBIx/Romani/PreparedStatement.pm blib/lib/DBIx/Romani/Driver/sqlite/IdGenerator.pm blib/lib/DBIx/Romani/Query/XML/SQL.pm blib/lib/DBIx/Romani/Query/SQL/Literal.pm
-	$(RM_F) blib/lib/DBIx/Romani/Query/Function.pm blib/lib/DBIx/Romani/PreparedQuery.pm blib/lib/DBIx/Romani/Connection.pm blib/lib/DBIx/Romani/Driver/mysql/IdGenerator.pm blib/lib/DBIx/Romani/Query/Delete.pm
-	$(RM_F) blib/lib/DBIx/Romani/Query/Function/Now.pm blib/lib/DBIx/Romani/Query/Select/Join.pm $(MAKEFILE_OLD) blib/lib/DBIx/Romani/Query/Insert.pm blib/lib/DBIx/Romani/Driver/sqlite.pm
-	$(RM_F) blib/lib/DBIx/Romani/IdGenerator.pm blib/lib/DBIx/Romani/ResultSet.pm blib/lib/DBIx/Romani/Query/Where.pm blib/lib/DBIx/Romani/Query/XML/Function.pm blib/lib/DBIx/Romani/Query/Select.pm
-	$(RM_F) blib/lib/DBIx/Romani/Connection/Factory.pm blib/lib/DBIx/Romani/Query/XML/Util.pm blib/lib/DBIx/Romani/Query/SQL/Column.pm blib/lib/DBIx/Romani/Query/Select/Result.pm
-	$(RM_F) blib/lib/DBIx/Romani/Query/Variable.pm blib/lib/DBIx/Romani/Query/Select/OrderBy.pm blib/lib/DBIx/Romani/Query/SQL/TTT/Join.pm blib/lib/DBIx/Romani/Query/XML/TTT.pm
-	$(RM_F) blib/lib/DBIx/Romani/Query/XML/Where.pm blib/lib/DBIx/Romani/Query/Operator.pm
+	$(RM_F) blib/lib/DBIx/Romani/Query/SQL/Null.pm blib/lib/DBIx/Romani/Query/Function/Count.pm blib/lib/DBIx/Romani.pm $(FIRST_MAKEFILE) blib/lib/DBIx/Romani/Query/XML/Select.pm
+	$(RM_F) blib/lib/DBIx/Romani/Query/SQL/Generate.pm blib/lib/DBIx/Romani/PreparedStatement.pm blib/lib/DBIx/Romani/Driver/sqlite/IdGenerator.pm blib/lib/DBIx/Romani/Query/XML/SQL.pm
+	$(RM_F) blib/lib/DBIx/Romani/Query/SQL/Literal.pm blib/lib/DBIx/Romani/Query/Function.pm blib/lib/DBIx/Romani/PreparedQuery.pm blib/lib/DBIx/Romani/Connection.pm
+	$(RM_F) blib/lib/DBIx/Romani/Driver/mysql/IdGenerator.pm blib/lib/DBIx/Romani/Query/Delete.pm blib/lib/DBIx/Romani/Query/Function/Now.pm blib/lib/DBIx/Romani/Query/Select/Join.pm $(MAKEFILE_OLD)
+	$(RM_F) blib/lib/DBIx/Romani/Query/Insert.pm blib/lib/DBIx/Romani/Driver/sqlite.pm blib/lib/DBIx/Romani/IdGenerator.pm blib/lib/DBIx/Romani/ResultSet.pm blib/lib/DBIx/Romani/Query/XML/Function.pm
+	$(RM_F) blib/lib/DBIx/Romani/Query/Where.pm blib/lib/DBIx/Romani/Query/Select.pm blib/lib/DBIx/Romani/Connection/Factory.pm blib/lib/DBIx/Romani/Query/XML/Util.pm blib/lib/DBIx/Romani/Query/SQL/Column.pm
+	$(RM_F) blib/lib/DBIx/Romani/Query/Select/Result.pm blib/lib/DBIx/Romani/Query/Variable.pm blib/lib/DBIx/Romani/Query/Select/OrderBy.pm blib/lib/DBIx/Romani/Query/SQL/TTT/Join.pm
+	$(RM_F) blib/lib/DBIx/Romani/Query/XML/TTT.pm blib/lib/DBIx/Romani/Query/XML/Where.pm blib/lib/DBIx/Romani/Query/Operator.pm
 
 
 # --- MakeMaker metafile section:
@@ -808,7 +811,7 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd:
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,0,10,0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,0,11,0">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <TITLE>$(DISTNAME)</TITLE>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>Romani is a SQL and database abstraction layer, inspired by Creole, which aims to help adapt to the differences in SQL dialects</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>David Snopek</AUTHOR>' >> $(DISTNAME).ppd
@@ -843,6 +846,7 @@ pm_to_blib: $(TO_INST_PM)
 	  lib/DBIx/Romani/Query/XML/TTT.pm blib/lib/DBIx/Romani/Query/XML/TTT.pm \
 	  lib/DBIx/Romani/Query/SQL/TTT/Join.pm blib/lib/DBIx/Romani/Query/SQL/TTT/Join.pm \
 	  lib/DBIx/Romani/Query/Where.pm blib/lib/DBIx/Romani/Query/Where.pm \
+	  lib/DBIx/Romani.pm blib/lib/DBIx/Romani.pm \
 	  lib/DBIx/Romani/Query/XML/SQL.pm blib/lib/DBIx/Romani/Query/XML/SQL.pm \
 	  lib/DBIx/Romani/Query/Select/Join.pm blib/lib/DBIx/Romani/Query/Select/Join.pm \
 	  lib/DBIx/Romani/Driver/mysql.pm blib/lib/DBIx/Romani/Driver/mysql.pm \
@@ -863,8 +867,8 @@ pm_to_blib: $(TO_INST_PM)
 	  lib/DBIx/Romani/Query/SQL/TTT/Operator.pm blib/lib/DBIx/Romani/Query/SQL/TTT/Operator.pm \
 	  lib/DBIx/Romani/Query/Variable.pm blib/lib/DBIx/Romani/Query/Variable.pm \
 	  lib/DBIx/Romani/PreparedQuery.pm blib/lib/DBIx/Romani/PreparedQuery.pm \
-	  lib/DBIx/Romani/Query/SQL/Column.pm blib/lib/DBIx/Romani/Query/SQL/Column.pm \
 	  lib/DBIx/Romani/Query/XML/Function.pm blib/lib/DBIx/Romani/Query/XML/Function.pm \
+	  lib/DBIx/Romani/Query/SQL/Column.pm blib/lib/DBIx/Romani/Query/SQL/Column.pm \
 	  lib/DBIx/Romani/Query/Update.pm blib/lib/DBIx/Romani/Query/Update.pm \
 	  lib/DBIx/Romani/Connection/Factory.pm blib/lib/DBIx/Romani/Connection/Factory.pm \
 	  lib/DBIx/Romani/Query/XML/Where.pm blib/lib/DBIx/Romani/Query/XML/Where.pm \

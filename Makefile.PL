@@ -4,7 +4,7 @@ use inc::Module::Install;
 name 'DBIx-Romani';
 abstract 'Romani is a SQL and database abstraction layer, inspired by Creole, which aims to help adapt to the differences in SQL dialects';
 author 'David Snopek';
-version '0.0.10';
+version '0.0.11';
 license 'gpl';
 
 build_requires 'Test::More';
