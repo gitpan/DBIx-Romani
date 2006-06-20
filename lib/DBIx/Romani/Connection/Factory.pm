@@ -12,13 +12,17 @@ sub new
 
 	my $dbh;
 	my $dsn;
+	my $username;
+	my $password;
 	my $driver;
 
 	if ( ref($args) eq 'HASH' )
 	{
-		$dbh = $args->{dbh};
-		$dsn = $args->{dsn};
-		$driver = $args->{driver};
+		$dbh      = $args->{dbh};
+		$dsn      = $args->{dsn};
+		$username = $args->{username};
+		$password = $args->{password};
+		$driver   = $args->{driver};
 	}
 
 	if ( not defined $dbh and not defined $dsn )
@@ -38,9 +42,11 @@ sub new
 	}
 
 	my $self = {
-		dbh => $dbh,
-		dsn => $dsn,
-		driver => $driver
+		dbh      => $dbh,
+		dsn      => $dsn,
+		username => $username,
+		password => $password,
+		driver   => $driver
 	};
 
 	bless  $self, $class;
@@ -59,7 +65,7 @@ sub create
 	}
 	else
 	{
-		my $dbh = DBI->connect( $self->{dsn} );
+		my $dbh = DBI->connect( $self->{dsn}, $self->{username}, $self->{password} );
 		$conn = DBIx::Romani::Connection->new({ dbh => $dbh, driver => $self->{driver}, disconnect => 1 });
 	}
 
