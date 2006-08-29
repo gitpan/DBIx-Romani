@@ -56,12 +56,16 @@ sub add_from
 {
 	my ($self, $table_name) = @_;
 	
-	# don't add it twice!!
-	my @other = grep /^$table_name$/, @{$self->get_from()};
-	if ( scalar @other == 0 )
+	foreach my $other ( @{$self->get_from()} )
 	{
-		push @{$self->{from}}, $table_name;
+		if ( $table_name eq $other )
+		{
+			# don't add it twice!!
+			return;
+		}
 	}
+
+	push @{$self->{from}}, $table_name;
 }
 
 sub add_result

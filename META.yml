@@ -20,4 +20,4 @@ requires:
   Exception::Class: 0
   Exception::Class::DBI: 0
   XML::DOM: 0
-version: 0.0.14
+version: '@XMLDOOM_VERSION'
